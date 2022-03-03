@@ -1,0 +1,29 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="{% static 'js/login.js' %}"></script>
+    <title>{{ title }}</title>
+</head>
+<body>
+    <div class="login_form">
+        {% load static %}
+          <img src="{% static 'images/instagram.png' %}" width="150px" height="70px" alt="">
+          <p>Welcome to Instagram, connect with friends around 
+            the world, ,create account to proced.</p>
+            <form action="{% url 'Signup' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <p><input type="text" oninput="removerError(this.id)" name="usernames" autocomplete="off" id="usernames" placeholder="Enter username"></p>
+                <p><input type="email" oninput="removerError(this.id)" name="useremails" autocomplete="off" id="useremails" placeholder="Enter email adress"></p>
+                <p><input type="file" oninput="removerError(this.id)" name="userimages" autocomplete="off" id="userimages"></p>
+                <p><input type="password" oninput="removerError(this.id)" name="passwords" autocomplete="off" id="passwords" placeholder="Enter password"></p>
+                <p><input type="password" oninput="removerError(this.id)" name="confirmpassword" autocomplete="off" id="confirmpassword" placeholder="confirm password"></p>
+                <p><a href="{% url 'Login' %}">Have account?</a></p>
+                <p><input type="submit" value="Sign-Up" id="submitbutton" onclick="return Validatesignup()"></p>
+            </form>
+    </div>
+</body>
+</html>

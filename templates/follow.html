@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% block title %}
+  {{ title }}
+{% endblock %}
+
+{% block navbar %}
+{% include 'navbar.html' %}
+{% endblock %}
+
+{% block body %}
+    {% if users == "Unknownuser" %}
+      <div class="nousers">
+          <p>Nothing to show, You are not logged in please login <a href="{% url 'Login' %}">here</a> to access this page details</p>
+      </div>
+    {% else %}
+    <div class="container" id="flex_allfollows">
+        <div class="followers_surgest">
+          <h3>Surgested For You</h3>
+            {% for accounts in get_accounts %}
+             {% if accounts.useremail != users %}
+              <div class="accounts">
+                <div class="flex_images_sections">
+                  <div class="imagesn">
+                    <img src="{{ accounts.userimage.url }}" height="50px" width="50px" alt="">
+                  </div>
+                  <div class="name_details">
+                    <div class="username">{{ accounts.username }}</div>
+                    <div class="emails">{{ accounts.useremail }}</div>
+                  </div>
+                </div>
+                <div class="follow_button">
+                  <form action="{% url 'followed' accounts.id  %}" method="post">
+                    {% csrf_token %}
+                    <button><i class="fa-solid fa-plus"></i> Follow</button>
+                  </form>
+                </div>
+              </div>
+             {% endif %}
+            {% endfor %}
+        </div>
+        <div class="current_following">
+          <h3>Following</h3>
+          {% if followed != "None"  %}
+              {% for follow in followed %}
+              <div class="accounts">
+                <div class="flex_images_sections" id="flex_images_sections">
+                  <div class="imagesn">
+                    <img src="../media/{{ follow.followed_account.userimage }}" height="50px" width="50px" alt="">
+                  </div>
+                  <div class="name_details">
+                    <div class="username">{{ follow.followed_account.username }}</div>
+                    <div class="emails">{{ follow.followed_account.useremail }}</div>
+                  </div>
+                </div>
+                <div class="follow_button">
+                  <form action="{% url 'unfollow' follow.id  %}" method="post">
+                    {% csrf_token %}
+                    <button> Unfollow</button>
+                  </form>
+                </div>
+              </div>
+            {% endfor %}
+         {% else %}
+            <div class="text-center">Currently following No one</div>
+         {% endif %}
+        </div>
+    </div>
+    {% endif %}
+  
+{% endblock %}

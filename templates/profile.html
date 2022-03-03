@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block title %}
+  {{ title }}
+{% endblock %}
+
+{% block navbar %}
+{% include 'navbar.html' %}
+{% endblock %}
+
+{% block body %}
+    {% if users == "Unknownuser" %}
+      <div class="nousers">
+          <p>Nothing to show, You are not logged in please login <a href="{% url 'Login' %}">here</a> to access this page details</p>
+      </div>
+    {% else %}
+    <div class="container">
+       <div class="topdetails">
+          <div class="image_sections">
+            <img src="{{ mydetails.userimage.url }}" height="150px" width="150px" alt="">
+          <div class="pdetails">
+                <div class="username"> <span class="boldnames">Name:</span> {{ mydetails.username }}</div>
+                <div class="useremails"> <span class="boldnames">Email:</span> {{ mydetails.useremail }}</div>
+                <div class="useremails">
+                   <span class="boldnames">Bio:</span>
+                    {% if bioinfo != "notbio" %}
+                    <div class="bioin">{{ bioinfo.user_bio }}</div> 
+                    {% endif %} 
+                    <button onclick="openViews()" style="width: 70px; height: 25px; font-size: 15px;" id="buttons">Add Bio</button>
+                </div>
+          </div>
+          </div>
+       </div>
+    </div>
+    <!-- bio models -->
+    <div class="addbiosdiv" id="addbiosdiv">
+      <div class="closebio"><i class="fa-solid fa-xmark" onclick="closeViews()"></i></div>
+      <div class="whitebackgrounds">
+        <div class="biotitles"><h4>Add Bio</h4></div>
+        <p>Add Bio, If you already have a bio, it will be replaced with current bio parmanently.</p>
+        <form action="{% url 'biography' mydetails.id  %}" method="post" id="bioform">{% csrf_token %}
+          <textarea name="userbio" id="userbio" cols="30" rows="10" placeholder="Type your bio here" required></textarea>
+          <input type="submit" value="Add Bio" id="buttons">
+        </form>
+      </div>
+    </div>
+    <!-- end of model -->
+    {% endif %}
+  <div class="container" style="margin-top: 30px;">
+    <div class="posted_all_images">
+      {% if posts == 'Nopost' %}
+         <div class="nopostimages text-danger">You havent made any post yet, give it a try, just a fiew steps and your post will be online.</div>
+      {% else %}
+      <div class="flex_images_post">
+        {% for post in posts %}
+         <img src="../media/{{ post.image_name }}" height="200px" width="300px" alt="">
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}

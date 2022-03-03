@@ -1,0 +1,29 @@
+<div class="navbar">
+   <div class="container">
+    {% load static %}
+    <div class="logo"><a href="{% url 'home' %}"><img src="{% static 'images/instagram.png' %}" height="50px" width="150px" alt=""></a></div>
+    <div class="nav_items">
+        <ul>
+            <li><a href="{% url 'home' %}"><i class="fa-solid fa-house"></i></a></li>
+            <li><a href="{% url 'follow' %}"><i class="fa-solid fa-users"></i></a></li>
+            <li><a onclick="showCreatePost()"><i class="fa-solid fa-plus"></i></a></li>
+            <li><a href="{% url 'profiles' %}"><i class="fa-solid fa-id-badge"></i></a></li>
+        </ul>
+    </div>
+   </div>
+</div>
+
+<div class="create_post" id="create_post">
+    <div class="closees">
+        <span><i onclick="closeCreatePost()" class="fa-solid fa-xmark"></i></span>
+    </div>
+    <div class="posts">
+        <div class="titles">Upload Images</div>
+        <p class="text-center">Upload images to share with friends and relative, image will be posted public.</p>
+        <form action="{% url 'uploadimages' %}" method="post" enctype="multipart/form-data">{% csrf_token %}
+           <input type="file" name="imagefiles" id="imagefiles">
+           <textarea name="imagecaptions" id="imagecaptions" cols="30" rows="10" placeholder="caption your image"></textarea>
+            <input type="submit" value="Create Post" id="buttons">
+        </form>
+    </div>
+</div>

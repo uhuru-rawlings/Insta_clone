@@ -1,0 +1,27 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="{% static 'js/login.js' %}"></script>
+    <title>{{ title }}</title>
+</head>
+<body>
+    <div class="login_form">
+        {% load static %}
+          <img src="{% static 'images/instagram.png' %}" width="150px" height="70px" alt="">
+          <p>Welcome to Instagram, connect with friends around 
+            the world</p>
+            <form action="" method="post">
+                {% csrf_token %}
+                <div class="text-danger text-center" style="color: red;">{{ error }}</div>
+                <p><input type="email" name="useremails"  oninput="removerError(this.id)" autocomplete="off" id="useremails" placeholder="Enter email adress"></p>
+                <p><input type="password" name="passwords"  oninput="removerError(this.id)" autocomplete="off" id="passwords" placeholder="Enter password"></p>
+                <p><a href="{% url 'Signup' %}">Dont have account?</a></p>
+                <p><input type="submit" value="Login" id="submitbutton" onclick="return ValidateLogin()"></p>
+            </form>
+    </div>
+</body>
+</html>

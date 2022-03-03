@@ -1,0 +1,288 @@
+*{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+.navbar{
+    border-bottom: 1px solid gainsboro;
+}
+.nav_items ul li{
+    list-style: none;
+    display: inline;
+    padding-left: 15px;
+}
+.nav_items ul li a{
+    color: rgb(37, 36, 36);
+    font-size: 25px;
+}
+.create_post{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right:0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.7);
+    display: none;
+}
+.create_post .posts{
+    background-color: white;
+    width: 25%;
+    border-radius: 20px;
+    height: 400px;
+    margin: auto;
+    margin-top: 50px;
+}
+.create_post .posts form{
+   margin: 10px; 
+   margin-top: 60px;
+}
+.create_post .titles{
+    font-weight: bold;
+    font-size: 16px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid gainsboro;
+    text-align: center;
+}
+#imagefiles{
+    height: 40px;
+    border: 1px solid gainsboro;
+    outline: none;
+    width: 100%;
+    margin-bottom: 10px;
+    padding-left: 20px;
+}
+#imagecaptions{
+    height: 70px;
+    resize: none;
+    outline: none;
+    border: 1px solid gainsboro;
+    padding-left: 20px;
+    width: 100%;
+}
+#buttons{
+    height: 45px;
+    width: 100%;
+    color: white;
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+    background-image: linear-gradient(to right, #F99D4F, #CE4F89);
+    margin-top: 10px;
+}
+.closees{
+    width: fit-content;
+    height: fit-content;
+    float: right;
+    margin-right: 30px;
+}
+.closees span{
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+
+}
+.nousers{
+    width: 100%;
+    height: 450px;
+}
+.nousers p{
+    width: 70%;
+    margin: auto;
+    margin-top: 100px;
+    font-size: 24px;
+    font-weight: normal;
+}
+.flex_home{
+    display: flex;
+}
+.first_section{
+    width: 60%;
+}
+.search{
+    margin-top: 15px;
+}
+#searchitems{
+    height: 40px;
+    width: 60%;
+    border-radius: 20px;
+    border: 1px solid gainsboro;
+    outline: none;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+.flex_images_sections{
+    display: flex;
+    column-gap: 15px;
+    align-items: center;
+}
+.followers_surgest .accounts{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+}
+.name_details{
+    font-size: 14px;
+}
+.name_details .username{
+    font-weight: bold;
+}
+.imagesn img{
+    border-radius: 50%;
+}
+.name_details .emails{
+    color: rgb(109, 109, 109);
+}
+.follow_button button{
+    border: none;
+    background-color: rgba(25, 100, 185, 0.877);
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+    padding:4px 7px 4px 7px;
+}
+#flex_allfollows{
+    display: flex;
+    flex-wrap: wrap;
+}
+#flex_allfollows .followers_surgest{
+    width: 60%;
+    margin-top: 20px;
+}
+.current_following{
+    margin-top: 20px;
+    padding: 10px;
+}
+.current_following .accounts{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+}
+.topdetails{
+    margin-top: 40px;
+}
+.topdetails img{
+    border-radius: 50%;
+}
+.boldnames{
+    font-weight: bold;
+}
+.image_sections{
+    display: flex;
+    column-gap: 30px;
+    align-items: center;
+}
+.addbiosdiv{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.7);
+}
+.addbiosdiv .whitebackgrounds{
+    width: 30%;
+    margin: auto;
+    margin-top: 70px;
+    height: 350px;
+    border-radius: 20px;
+    background-color: white;
+}
+.addbiosdiv .whitebackgrounds #bioform{
+   margin: 15px;
+   margin-top: 30px;
+}
+.addbiosdiv .whitebackgrounds form textarea{
+    width: 100%;
+    height: 100px;
+    outline: none;
+    resize: none;
+    border: 1px solid gainsboro;
+}
+.addbiosdiv .whitebackgrounds p{
+    margin: 10px;
+    margin-top: 30px;
+}
+#addbiosdiv{
+    display: none;
+}
+.biotitles{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid gainsboro;
+    text-align: center;
+}
+.closebio{
+    font-size: 30px;
+    color: white;
+    float: right;
+    margin-right: 20px;
+}
+#post_comments{
+    height: 40px;
+    width: 90%;
+    border: 1px solid gainsboro;
+    outline: none;
+    resize: none;
+    padding-left: 20px;
+}
+#sendcomments{
+    border: none;
+    background-color: inherit;
+    font-size: 25px;
+}
+#formgroups{
+    display: flex;
+    align-items: center;
+    margin-left: 15px;
+}
+#likes{
+    font-size: 20px;
+    margin-left: 15px;
+}
+.post_card .image_caption{
+    margin-left: 15px;
+}
+.postby_det{
+    font-size: 14px;
+    color: rgb(197, 197, 197);
+}
+.post_card .postby{
+    font-weight: bold;
+    margin-left: 15px;
+}
+#prifileimages{
+    display: flex;
+    align-items: center;
+    margin: 5px 0px 9px 15px;
+}
+#prifileimages img{
+    border-radius: 50%;
+}
+#prifileimages .names{
+    font-weight: bold;
+}
+#prifileimages .emailcaption{
+    font-size:12px;
+    color: rgb(167, 166, 166);
+    padding-top: -10px;
+}
+.nopostimages{
+    margin-top: 50px;
+}
+.flex_images_post{
+    display: flex;
+    column-gap: 5px;
+    flex-wrap: wrap;
+}
+#flex_images_sections{
+    display: flex;
+    justify-content: space-between;
+}
+.current_following{
+    width: 40%;
+}
+.comment_cards{
+    margin-left: 15px;
+}

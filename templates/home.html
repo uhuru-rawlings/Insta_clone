@@ -1,0 +1,94 @@
+
+{% extends 'base.html' %}
+{% block title %}
+  {{ title }}
+{% endblock %}
+
+{% block navbar %}
+{% include 'navbar.html' %}
+{% endblock %}
+
+{% block body %}
+    {% if users == "Unknownuser" %}
+      <div class="nousers">
+          <p>Nothing to show, You are not logged in please login <a href="{% url 'Login' %}">here</a> to access this page details</p>
+      </div>
+    {% else %}
+    <div class="container">
+       <div class="flex_home">
+         <div class="first_section">
+           <div class="search">
+             <form action="" method="post">
+               {% csrf_token %}
+               <input type="search" name="searchitems" autocomplete="off" id="searchitems" placeholder="Search">
+             </form>
+           </div>
+           <div class="contents_cards">
+             {% if posts == 'Youhavenocurrentpost' %}
+                <div class="post_error">No Post</div>
+             {% else %}
+              {% for post in posts %}
+                  <div class="post_card card" style="margin-bottom: 10px;">
+                    <div class="prifileimages" id="prifileimages">
+                      <img src="../media/{{ post.profile.userimage }}" height="40px" width="40px" alt="">
+                      <div class="names_details">
+                        <div class="names">{{ post.profile }}</div>
+                        <div class="emailcaption">{{ post.profile.useremail }}</div>
+                      </div>
+                    </div>
+                    <div class="postimage"><img src="../media/{{ post.image_name }}" height="300px" width="100%" alt=""></div>
+                    <div class="likes" id="likes">
+                      <form action="{% url 'likes' post.id %}" method="post">
+                        {% csrf_token %}
+                        <button id="sendcomments"><i class="fa-solid fa-heart"></i></button>
+                      </form>
+                      <div class="numbers">
+                        {% for like in likes %}
+                            {% if like.post_id == post.id %}
+                              {{ like.post_id | length }}
+                            {% endif %}
+                        {% endfor %}
+                      </div>
+                    </div>
+                    <div class="image_caption">{{ post.image_caption }}</div>
+                    <div class="posted_comments">
+                      {% if comms == 'nocomms' %}
+                      <div class="nocomms">No comments for this post</div>
+                      {% else %}
+                          {% for comms in comms %}
+                            {% if comms.post_id.id == post.id %}
+                              <div class="notice" style="margin-left: 15px; font-style: italic; text-decoration: underline;">comments</div>
+                              <div class="comment_cards" style="margin-top: 10px; font-style: italic; font-size: 15px; line-height: 12px;">
+                                <div class="comments_each" style="font-style: normal;font-weight: bold;">{{ comms.comment_by.username }}</div>
+                                <div class="comments_each" style="color: rgb(138, 138, 138);font-style: normal;">{{ comms.comment_post }}...</div>
+                                <div class="comments_each" style="font-size: 10px; color: rgb(177, 176, 176);">{{ comms.posted_date }}</div>
+                              </div>
+                              <div class="more" style="margin-left: 15px;">More...</div>
+                            {% endif %}
+                          {% endfor %}
+                      {% endif %}
+                    </div>
+                    <div class="comment_form">
+                      <form action="{% url 'comments' post.id %}" method="post">
+                        {% csrf_token %}
+                        <div class="form-group" id="formgroups">
+                          <textarea name="comments" id="post_comments" cols="30" rows="10" placeholder="Add a comment..."></textarea>
+                          <button id="sendcomments"><i class="fa-solid fa-paper-plane"></i></button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+              {% endfor %}
+             {% endif %}
+           </div>
+         </div>
+         <!-- second -->
+           <div class="followers">
+             foloowers
+           </div>
+       </div>
+       <!--  -->
+    </div>
+    {% endif %}
+  
+{% endblock %}

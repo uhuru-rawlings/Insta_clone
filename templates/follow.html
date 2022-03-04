@@ -31,14 +31,14 @@
                                     <div class="follow_button">
                                       <form action="{% url 'followed' accounts.id  %}" method="post">
                                         {% csrf_token %}
-                                        <button><i class="fa-solid fa-plus"></i> Follow</button>
+                                        <button><i class="fa-solid fa-plus"></i> <span id="followbn">Follow</span></button>
                                       </form>
                                     </div>
                                   </div>
                       {% endif %}
               {% endfor %}
         </div>
-        <div class="current_following">
+        <div class="current_following" id="followingclose">
           <h3>Following</h3>
           {% if followed != "None"  %}
               {% for follow in followed %}
@@ -55,7 +55,7 @@
                 <div class="follow_button">
                   <form action="{% url 'unfollow' follow.id  %}" method="post">
                     {% csrf_token %}
-                    <button> Unfollow</button>
+                    <button > Unfollow</button>
                   </form>
                 </div>
               </div>

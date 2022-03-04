@@ -170,6 +170,7 @@
 }
 .image_sections{
     display: flex;
+    flex-wrap: wrap;
     column-gap: 30px;
     align-items: center;
 }
@@ -306,5 +307,25 @@
 @media screen and (max-width: 930px) {
     .followers{
         display: none;
+    }
+    #flex_allfollows .first_section{
+        width: 100%;
+    }
+    .flex_home .first_section{
+        width: 100%;
+    }
+    .create_post .posts{
+        width: 100%;
+    }
+}
+@media screen and (max-width: 400px) {
+    #followingclose{
+        display: none;
+    }
+    #followbn{
+        display: none;
+    }
+    .followers_surgest{
+        width: 100%;
     }
 }

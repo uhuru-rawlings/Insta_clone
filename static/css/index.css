@@ -286,3 +286,15 @@
 .comment_cards{
     margin-left: 15px;
 }
+.logo{
+    font-family: 'Black Ops One', cursive;
+    font-family: 'Lato', sans-serif;
+}
+.logo a{
+    font-size: 24px;
+    font-style: italic;
+    text-decoration: none;
+    font-family: 'Black Ops One', cursive;
+    /* font-family: 'Lato', sans-serif; */
+    color: rgb(37, 36, 36);
+}

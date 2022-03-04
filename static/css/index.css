@@ -303,7 +303,7 @@
 #home_followers{
     margin: 10px;
 }
-@media screen and (max-width: 930) {
+@media screen and (max-width: 930px) {
     .followers{
         display: none;
     }

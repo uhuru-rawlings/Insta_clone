@@ -289,13 +289,15 @@
 .logo{
     font-family: 'Black Ops One', cursive;
     font-family: 'Lato', sans-serif;
+    font-family: 'Lobster', cursive;
 }
 .logo a{
     font-size: 24px;
     font-style: italic;
     text-decoration: none;
     font-family: 'Black Ops One', cursive;
-    /* font-family: 'Lato', sans-serif; */
+    font-family: 'Lato', sans-serif;
+    font-family: 'Lobster', cursive;
     color: rgb(37, 36, 36);
 }
 #home_followers{

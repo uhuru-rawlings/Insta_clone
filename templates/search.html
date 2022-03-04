@@ -17,12 +17,7 @@
     <div class="container">
        <div class="flex_home">
          <div class="first_section">
-           <div class="search">
-             <form action="{% url 'searchresults' %}" method="post">
-               {% csrf_token %}
-               <input type="search" name="searchitems" autocomplete="off" id="searchitems" placeholder="Search">
-             </form>
-           </div>
+            <h3>Search result for : {{ usernames }}</h3>
            <div class="contents_cards">
              {% if posts == 'Youhavenocurrentpost' %}
                 <div class="post_error">No Post</div>
@@ -45,7 +40,7 @@
                       <div class="numbers">
                         {% for like in likes %}
                             {% if like.post_id == post.id %}
-                              {{ like.post_id | length }}
+                              <div class="counts">{{ like.post_id.count }}</div>
                             {% endif %}
                         {% endfor %}
                       </div>
@@ -84,30 +79,11 @@
          </div>
          <!-- second -->
            <div class="followers current_following" id="home_followers">
-             <h3>Following</h3>
-             {% if followed != "None"  %}
-             {% for follow in followed %}
-             <div class="accounts">
-               <div class="flex_images_sections" id="flex_images_sections">
-                 <div class="imagesn">
-                   <img src="../media/{{ follow.followed_account.userimage }}" height="50px" width="50px" alt="">
-                 </div>
-                 <div class="name_details">
-                   <div class="username">{{ follow.followed_account.username }}</div>
-                   <div class="emails">{{ follow.followed_account.useremail }}</div>
-                 </div>
-               </div>
-               <div class="follow_button">
-                 <form action="{% url 'unfollow' follow.id  %}" method="post">
-                   {% csrf_token %}
-                   <button> Unfollow</button>
-                 </form>
-               </div>
-             </div>
-           {% endfor %}
-        {% else %}
-           <div class="text-center">Currently following No one</div>
-        {% endif %}
+             <h3>Profile</h3>
+             <div class="usernames">username: {{ profile.username }}</div>
+             <div class="usernames">useremail: {{ profile.useremail }}</div>
+             <div class="usernames">posts: {{ posts.count }}</div>
+             <div class="profileimages"><img src="../media/{{ profile.userimage }}" height="150px" width="150px" alt=""></div>
            </div>
        </div>
        <!--  -->

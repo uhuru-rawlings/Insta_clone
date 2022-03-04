@@ -19,7 +19,7 @@ from django.contrib import admin
 from django.urls import path
 from Logins.views import login_view
 from Signups.views import signup_view
-from Home.views import home_view, comments_view,likes_view
+from Home.views import home_view, comments_view,likes_view, search_view
 from Follow.views import follow_view, follow_user_view, unfollow_view
 from Profiles.views import profile_view, add_bio_view, uploadimages
 urlpatterns = [
@@ -27,6 +27,7 @@ urlpatterns = [
     path('', login_view, name = "Login"),
     path('signup/', signup_view, name = "Signup"),
     path('home/', home_view, name = "home"),
+    path('search/', search_view, name = "searchresults"),
     path('comment/<int:post_id>/', comments_view, name = "comments"),
     path('like/<int:post_id>/', likes_view, name = "likes"),
     path('follow/', follow_view, name = "follow"),

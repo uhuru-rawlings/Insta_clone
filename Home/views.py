@@ -57,7 +57,30 @@ def likes_view(request, post_id):
         current_user = request.COOKIES['loged_in_user']
         liked_by = Signups.objects.get(useremail=current_user)
         liked_post = Imageuploads.objects.get(id = post_id)
-        new_likes = Likes(post_id=liked_post, liked_by= liked_by)
-        new_likes.save()
+        try:
+            likes = Likes.objects.get(post_id=liked_post, liked_by= liked_by)
+            likes.delete()
+        except:
+            new_likes = Likes(post_id=liked_post, liked_by= liked_by)
+            new_likes.save()
 
     return redirect("/home/")
+
+def search_view(request):
+    if request.method == 'POST':
+        username = request.POST['searchitems']
+        profile = Signups.objects.filter(username=username).first()
+        posts = Imageuploads.objects.filter(profile_id = profile.id) 
+        likes = Likes.objects.all()
+        try:
+            comms = Comments.objects.all()
+        except:
+            comms = "nocomms"
+        context = {
+            "usernames":username,
+            "posts":posts,
+            "profile":profile,
+            "likes":likes,
+            "comms":comms
+        }
+        return render(request, "search.html", context)

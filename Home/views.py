@@ -1,9 +1,19 @@
 from django.shortcuts import render, redirect
 from Profiles.models import Imageuploads, Likes, Comments
 from Signups.models import Signups
+from Follow.models import Follow
 
 # Create your views here.
 def home_view(request):
+    try:
+        current_users = request.COOKIES['loged_in_user']
+    except:
+        return redirect("/")
+    user_id = Signups.objects.get( useremail = current_users)
+    try:
+        followed = Follow.objects.filter(current_user = user_id.id)
+    except:
+        followed = "None"
     try:
         likes = Likes.objects.all()
     except:
@@ -26,7 +36,8 @@ def home_view(request):
         "title":"Instagram",
         "posts": posts,
         "comms":comms,
-        "likes":likes
+        "likes":likes,
+        "followed":followed
     }
     return render(request, "home.html", context)
 

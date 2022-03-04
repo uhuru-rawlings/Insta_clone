@@ -4,7 +4,10 @@ from Signups.models import Signups
 
 # Create your views here.
 def profile_view(request):
-    current_users = request.COOKIES['loged_in_user']
+    try:
+        current_users = request.COOKIES['loged_in_user']
+    except:
+        return redirect("/")
     userid = Signups.objects.filter(useremail = current_users)
     mydetails = Signups.objects.filter( useremail = current_users).first()
     try:

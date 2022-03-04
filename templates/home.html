@@ -83,8 +83,31 @@
            </div>
          </div>
          <!-- second -->
-           <div class="followers">
-             foloowers
+           <div class="followers current_following" id="home_followers">
+             <h3>Following</h3>
+             {% if followed != "None"  %}
+             {% for follow in followed %}
+             <div class="accounts">
+               <div class="flex_images_sections" id="flex_images_sections">
+                 <div class="imagesn">
+                   <img src="../media/{{ follow.followed_account.userimage }}" height="50px" width="50px" alt="">
+                 </div>
+                 <div class="name_details">
+                   <div class="username">{{ follow.followed_account.username }}</div>
+                   <div class="emails">{{ follow.followed_account.useremail }}</div>
+                 </div>
+               </div>
+               <div class="follow_button">
+                 <form action="{% url 'unfollow' follow.id  %}" method="post">
+                   {% csrf_token %}
+                   <button> Unfollow</button>
+                 </form>
+               </div>
+             </div>
+           {% endfor %}
+        {% else %}
+           <div class="text-center">Currently following No one</div>
+        {% endif %}
            </div>
        </div>
        <!--  -->

@@ -298,3 +298,11 @@
     /* font-family: 'Lato', sans-serif; */
     color: rgb(37, 36, 36);
 }
+#home_followers{
+    margin: 10px;
+}
+@media screen and (max-width: 930) {
+    .followers{
+        display: none;
+    }
+}

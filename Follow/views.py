@@ -1,16 +1,18 @@
 from django.shortcuts import render, redirect
 from Signups.models import Signups
-from .models import Follow
-
+from Follow.models import Follow
+from django.db.models import Q
 # Create your views here.
 def follow_view(request):
-    current_users = request.COOKIES['loged_in_user']
+    try:
+        current_users = request.COOKIES['loged_in_user']
+    except:
+        return redirect("/")
     user_id = Signups.objects.get( useremail= current_users)
     try:
         followed = Follow.objects.filter(current_user = user_id.id)
     except:
         followed = "None"
-        pass
     try:
         testcookie = request.COOKIES['loged_in_user']
         users = testcookie
@@ -21,6 +23,11 @@ def follow_view(request):
         get_accounts = Signups.objects.all()
     except:
         pass
+    if followed != "None":
+        for x in get_accounts:
+            for f in followed:
+                if x.id == f.followed_account_id:
+                    get_accounts = get_accounts.filter(~Q(id = f.followed_account_id))
     context = {
         "title": "Instagram - Follow",
         "users": users,
@@ -46,7 +53,7 @@ def follow_user_view(request, userid):
 def unfollow_view(request, userid):
     if request.method == 'POST':
         current_users = request.COOKIES['loged_in_user']
-        user_id = Signups.objects.get( useremail= current_users)
-        unfoll = Follow.objects.get(current_user=user_id.id, followed_account=userid)
+        user_id = Signups.objects.get( useremail = current_users)
+        unfoll = Follow.objects.get(current_user = user_id.id, id = userid)
         unfoll.delete()
     return redirect("/follow/")

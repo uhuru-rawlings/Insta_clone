@@ -304,6 +304,30 @@
 #home_followers{
     margin: 10px;
 }
+.singlecomms{
+    height: 100px;
+    overflow-y: scroll;
+}
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 5px;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #CE4F89;
+    border-radius: 5px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #F99D4F;
+  }
 @media screen and (max-width: 930px) {
     .followers{
         display: none;

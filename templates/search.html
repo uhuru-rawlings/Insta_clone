@@ -50,17 +50,18 @@
                       {% if comms == 'nocomms' %}
                       <div class="nocomms">No comments for this post</div>
                       {% else %}
+                        <div class="singlecomms">
+                            <div class="notice" style="margin-left: 15px; font-style: italic; text-decoration: underline;">comments</div>
                           {% for comms in comms %}
                             {% if comms.post_id.id == post.id %}
-                              <div class="notice" style="margin-left: 15px; font-style: italic; text-decoration: underline;">comments</div>
                               <div class="comment_cards" style="margin-top: 10px; font-style: italic; font-size: 15px; line-height: 12px;">
                                 <div class="comments_each" style="font-style: normal;font-weight: bold;">{{ comms.comment_by.username }}</div>
                                 <div class="comments_each" style="color: rgb(138, 138, 138);font-style: normal;">{{ comms.comment_post }}...</div>
                                 <div class="comments_each" style="font-size: 10px; color: rgb(177, 176, 176);">{{ comms.posted_date }}</div>
                               </div>
-                              <div class="more" style="margin-left: 15px;">More...</div>
                             {% endif %}
                           {% endfor %}
+                        </div>
                       {% endif %}
                     </div>
                     <div class="comment_form">

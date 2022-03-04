@@ -8,3 +8,8 @@ This is a djasngo project , instagram clone. It implements basic instagram funct
 4. Follow other users and see their pictures on my timeline.
 5. Like a picture and leave a comment on it.
 ## SET UP INSTRUCTION
+### Requirements
+1. Python
+2. Django
+3. Postgres
+4. Virtual Environment

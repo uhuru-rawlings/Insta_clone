@@ -4,4 +4,4 @@ This is a djasngo project , instagram clone. It implements basic instagram funct
 ## USER STORIES
 1. Sign in to the application to start using.
 2. Upload my pictures to the application.
-
+See my profile with all my pictures.

@@ -14,11 +14,11 @@ This is a djasngo project , instagram clone. It implements basic instagram funct
 3. Postgres
 4. Virtual Environment
 <br>
-Installing python [python docs](https://www.python.org/doc/)
+ Installing python [ python docs](https://www.python.org/doc)
 <br>
 Installings Django <code>pip install django</code>
 <br>
-Installing postgres [install postgres](https://www.postgresqltutorial.com/install-postgresql/)
+Installing postgres [install postgres](https://www.postgresqltutorial.com/install-postgresql)
 <br>
 creating virtual environment <code>python3 -m virtualenv virtual</code>
 <ul>

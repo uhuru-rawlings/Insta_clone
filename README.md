@@ -7,3 +7,4 @@ This is a djasngo project , instagram clone. It implements basic instagram funct
 3. See my profile with all my pictures.
 4. Follow other users and see their pictures on my timeline.
 5. Like a picture and leave a comment on it.
+## SET UP INSTRUCTION

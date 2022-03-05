@@ -113,14 +113,14 @@ AUTH_USER_MODEL = 'Signups.Signups'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'instagram',
-        'USER':'moringa',
-        'PASSWORD':'Access',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'instagram',
+#         'USER':'moringa',
+#         'PASSWORD':'Access',
+#     }
+# }
 
 
 # Password validation

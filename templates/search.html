@@ -9,18 +9,15 @@
 {% endblock %}
 
 {% block body %}
-    {% if users == "Unknownuser" %}
-      <div class="nousers">
-          <p>Nothing to show, You are not logged in please login <a href="{% url 'Login' %}">here</a> to access this page details</p>
-      </div>
-    {% else %}
     <div class="container">
        <div class="flex_home">
          <div class="first_section">
             <h3>Search result for : {{ usernames }}</h3>
            <div class="contents_cards">
-             {% if posts == 'Youhavenocurrentpost' %}
-                <div class="post_error">No Post</div>
+             {% if posts == 'nopost' %}
+                <div class="post_error">user <span class="text-danger">{{ usernames }}</span> dont exist, posible reasons:
+                   you have provided a wrong username and the system is not able to
+                    retrieve any data ralating to this user. <div class="text-danger">Try correcting the username and retry.</div></div>
              {% else %}
               {% for post in posts %}
                   <div class="post_card card" style="margin-bottom: 10px;">
@@ -38,9 +35,9 @@
                         <button id="sendcomments"><i class="fa-solid fa-heart"></i></button>
                       </form>
                       <div class="numbers">
-                        {% for like in likes %}
-                            {% if like.post_id == post.id %}
-                              <div class="counts">{{ like.post_id.count }}</div>
+                        {% for like in alllikes %}
+                            {% if post.id == like.postid %}
+                            <div class="counts">{{ like.likes }} Likes</div>
                             {% endif %}
                         {% endfor %}
                       </div>
@@ -75,7 +72,6 @@
                     </div>
                   </div>
               {% endfor %}
-             {% endif %}
            </div>
          </div>
          <!-- second -->

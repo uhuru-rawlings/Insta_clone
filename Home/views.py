@@ -31,13 +31,22 @@ def home_view(request):
         users = testcookie
     except:
         return redirect("/")
+    alllikes = []
+    if posts != "Youhavenocurrentpost":
+        for post in posts:
+            getlike = Likes.objects.filter(post_id = post.id)
+            alllikes.append({"postid":post.id, "likes": getlike.count()})
+    print("#############")
+    print(alllikes)
+    print("############")
     context = {
         "users": users,
         "title":"Instagram",
         "posts": posts,
         "comms":comms,
         "likes":likes,
-        "followed":followed
+        "followed":followed,
+        "alllikes":alllikes
     }
     return render(request, "home.html", context)
 
@@ -69,18 +78,38 @@ def likes_view(request, post_id):
 def search_view(request):
     if request.method == 'POST':
         username = request.POST['searchitems']
-        profile = Signups.objects.filter(username=username).first()
-        posts = Imageuploads.objects.filter(profile_id = profile.id) 
+        try:
+            profile = Signups.objects.filter(username=username).first()
+        except:
+            return redirect("/home/")
+        try:
+            posts = Imageuploads.objects.filter(profile_id = profile.id)
+        except:
+            posts = "nopost" 
         likes = Likes.objects.all()
         try:
             comms = Comments.objects.all()
         except:
             comms = "nocomms"
+
+        alllikes = []
+        outcome = ''
+        if posts != "nopost":
+            for post in posts:
+                getlike = Likes.objects.filter(post_id = post.id)
+                if getlike:
+                    alllikes.append({"postid":post.id, "likes": getlike.count()})
+                else:
+                    outcome = "nopost"
+            else:
+                outcome = "nopost"
         context = {
             "usernames":username,
             "posts":posts,
             "profile":profile,
             "likes":likes,
-            "comms":comms
+            "comms":comms,
+            "alllikes":alllikes,
+            "outcome":outcome
         }
         return render(request, "search.html", context)

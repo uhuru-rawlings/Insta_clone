@@ -308,6 +308,10 @@
     height: 100px;
     overflow-y: scroll;
 }
+.numbers .counts{
+    font-size: 14px;
+    font-weight: bold;
+}
 ::-webkit-scrollbar {
     width: 10px;
   }

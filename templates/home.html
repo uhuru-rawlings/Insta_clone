@@ -43,9 +43,9 @@
                         <button id="sendcomments"><i class="fa-solid fa-heart"></i></button>
                       </form>
                       <div class="numbers">
-                        {% for like in likes %}
-                            {% if like.post_id == post.id %}
-                            <div class="counts">{{ like.post_id.count }}</div>
+                        {% for like in alllikes %}
+                            {% if post.id == like.postid %}
+                            <div class="counts">{{ like.likes }} Likes</div>
                             {% endif %}
                         {% endfor %}
                       </div>

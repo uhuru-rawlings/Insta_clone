@@ -83,7 +83,7 @@ def search_view(request):
         except:
             return redirect("/home/")
         try:
-            posts = Imageuploads.objects.filter(profile_id = profile.id)
+            posts = Imageuploads.objects.filter(profile_id = profile.id).order_by("-id")
         except:
             posts = "nopost" 
         likes = Likes.objects.all()

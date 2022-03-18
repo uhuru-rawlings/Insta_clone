@@ -36,9 +36,7 @@ def home_view(request):
         for post in posts:
             getlike = Likes.objects.filter(post_id = post.id)
             alllikes.append({"postid":post.id, "likes": getlike.count()})
-    print("#############")
-    print(alllikes)
-    print("############")
+
     context = {
         "users": users,
         "title":"Instagram",
@@ -72,7 +70,7 @@ def likes_view(request, post_id):
         except:
             new_likes = Likes(post_id=liked_post, liked_by= liked_by)
             new_likes.save()
-
+# function(a,b){a - b} => this is ana  anonymous function
     return redirect("/home/")
 
 def search_view(request):
